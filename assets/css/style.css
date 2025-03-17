@@ -133,9 +133,7 @@ summary{
 .media-figure {
   background-color: var(--neon-green);
   display: inline;
-  position: relative;
 }
-
 .media-figure .image {
   position: absolute;
   right: 2rem;
@@ -143,52 +141,17 @@ summary{
   width: max(50% - 16rem, 50% - 16vw);
   display: none;
 }
-
-/* Desktop hover behavior */
-@media screen and (min-width: 961px) {
-  .media-figure:has(.marker:hover) .image,
-  .media-figure:has(.marker:active) .image {
-    display: block;
-  }
+.media-figure:has(.marker:hover) .image,
+.media-figure:has(.marker:active) .image {
+  /* width: calc(50% - 16rem); */
+  display: block;
 }
-
-/* Mobile click behavior */
-@media screen and (max-width: 960px) {
-  .media-figure {
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  .media-figure .marker {
-    cursor: pointer;
-    display: inline-block;
-    padding: 0.5rem;
-  }
-
-  .media-figure .image {
-    position: static;
-    width: 100%;
-    margin-block: .5rem;
-    translate: none;
-  }
-
-  .media-figure .marker:active + .image {
-    display: block;
-  }
-
-  /* Use :focus-within to keep image visible after click */
-  .media-figure:focus-within .image {
-    display: block;
-  }
-}
-
 .media-figure .image img {
   max-width: 100%;
   width: 100%;
   height: auto;
   display: block;
 }
-
 .media-figure .image span {
   padding-block: .5rem;
   display: block;
