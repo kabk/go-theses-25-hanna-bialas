@@ -586,3 +586,63 @@ a:visited   {
 
 }
 
+/* Hide checkbox */
+.image-toggle {
+  display: none;
+}
+
+/* Style the marker (figure number) as a button */
+.media-figure .marker {
+  cursor: pointer;
+  background-color: var(--neon-green);
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Mobile styles */
+@media (max-width: 960px) {
+  .media-figure .image {
+    display: none;
+    position: static;
+    width: 100%;
+    margin-block: .5rem;
+    translate: none;
+  }
+
+  /* Show image when checkbox is checked */
+  .image-toggle:checked ~ .image {
+    display: block;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 961px) {
+  .media-figure .image {
+    position: absolute;
+    right: 2rem;
+    translate: 0 -50%;
+    width: max(50% - 16rem, 50% - 16vw);
+    display: none;
+  }
+
+  /* Show image on hover or when checkbox is checked */
+  .media-figure:has(.marker:hover) .image,
+  .image-toggle:checked ~ .image {
+    display: block;
+  }
+}
+
+/* Common image styles */
+.media-figure .image img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.media-figure .image span {
+  padding-block: .5rem;
+  display: block;
+}
+
