@@ -170,7 +170,7 @@ summary{
 
 .footnote-ref {
   color: #0066cc;
-  background-color: ;
+  background-color: rgba(0,0,255,0.8);
   text-decoration: none;
   background-color: rgba(0,0,255,0.8);
 }
