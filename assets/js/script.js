@@ -24,3 +24,10 @@ docReady(function() {
 });
 
 
+document.querySelector('.marker').addEventListener('click', function() {
+  const image = document.getElementById('toggleImage');
+  image.classList.toggle('hidden');
+
+  const isExpanded = !image.classList.contains('hidden');
+  this.setAttribute('aria-expanded', isExpanded);
+});

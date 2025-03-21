@@ -586,8 +586,9 @@ a:visited   {
 
 }
 
-/* Hide checkbox */
-.image-toggle {
+/* Remove the old toggle button styles */
+.image-toggle,
+.image-toggle-label {
   display: none;
 }
 
@@ -597,21 +598,25 @@ a:visited   {
   background-color: var(--neon-green);
   padding: 2px 6px;
   border-radius: 4px;
-  display: inline-block;
 }
 
 /* Mobile styles */
 @media (max-width: 960px) {
   .media-figure .image {
-    display: none;
+    display: block;
     position: static;
     width: 100%;
     margin-block: .5rem;
     translate: none;
   }
 
-  /* Show image when checkbox is checked */
-  .image-toggle:checked ~ .image {
+  /* Hide image when marker is clicked */
+  .media-figure:has(.marker:active) .image {
+    display: none;
+  }
+
+  /* Show image when marker is clicked again */
+  .media-figure:has(.marker:active) .marker:active ~ .image {
     display: block;
   }
 }
@@ -626,9 +631,8 @@ a:visited   {
     display: none;
   }
 
-  /* Show image on hover or when checkbox is checked */
   .media-figure:has(.marker:hover) .image,
-  .image-toggle:checked ~ .image {
+  .media-figure:has(.marker:active) .image {
     display: block;
   }
 }
