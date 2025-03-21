@@ -15,11 +15,11 @@
 */
 
 @font-face {
-    font-family: 'Equateur';
-    src: url('/assets/fonts/Equateur-Regular.woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
+  font-family: 'Equateur';
+  src: url('/assets/fonts/Equateur-Regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
 
 
@@ -28,13 +28,13 @@
 :root {
   /* Color values */
   --color-background: rgb(119, 119, 119);
-  --color-text: rgba(0,0,0,1);
-  --color-text-link: rgba(0,0,255,0.8);
-  --color-text-link-hover: rgba(0,0,255,0.4);
+  --color-text: rgba(0, 0, 0, 1);
+  --color-text-link: rgba(0, 0, 255, 0.8);
+  --color-text-link-hover: rgba(0, 0, 255, 0.4);
   --neon-green: rgb(170, 255, 0);
   /* Font values */
   --font-text: 'Your Font Name', 'Helvetica', 'Arial', sans-serif;
-  --font-size: 24px;
+  --font-size: 18px;
   /* Margin value */
   --margin: 1rem;
 }
@@ -50,30 +50,30 @@ html {
 }
 
 body {
-  position:relative;
+  position: relative;
   background-color: var(--color-background);
   font: var(--font-size) var(--font-family);
   color: var(--color-text);
-  width:100%;
-  height:auto;
-  overflow-y:auto;
- 
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+
   font-family: serif;
-  background-color:rgb(119, 119, 119);
+  background-color: rgb(119, 119, 119);
 }
 
 
 h2 {
   text-align: center;
-  color: rgba(0,0,255,0.8) ;
-  
+  color: rgba(0, 0, 255, 0.8);
+
 }
 
 
 
-h3{
-  text-align: center ;
-  color: rgba(0,0,255,0.8) ;
+h3 {
+  text-align: center;
+  color: rgba(0, 0, 255, 0.8);
 }
 
 
@@ -81,30 +81,32 @@ h3{
 
 h4 {
   text-align: center;
-  color: rgba(0,0,255,0.8) ;
+  color: rgba(0, 0, 255, 0.8);
   font-size: 1.5rem;
 }
 
 
 
-ol, ul{
+ol,
+ul {
   list-style-position: inside;
 }
-li{
+
+li {
   font-family: "scotch-display-dingbats", sans-serif;
   font-weight: 400;
   font-style: normal;
   list-style-type: "O";
-  
-  
+
+
 }
+
 li * {
   font-family: sans-serif;
-  
+
 }
 
 
-/* page structure */
 
 div.page-wrapper {
   padding: var(--margin);
@@ -113,20 +115,9 @@ div.page-wrapper {
 
 @media (max-width: 960px) {
   div.page-wrapper {
-    padding: var(--margin);
-    padding-top: 80px;
+    margin: 0;
+    padding: 0;
   }
-}
-
-
-/* content */
-
-main{
- 
-}
-
-summary{
-  
 }
 
 
@@ -134,28 +125,41 @@ summary{
   background-color: var(--neon-green);
   display: inline;
 }
+
 .media-figure .image {
-  position: absolute;
-  right: 2rem;
-  translate: 0 -50%;
-  width: max(50% - 16rem, 50% - 16vw);
-  display: none;
+  position: static;
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  max-height: 0; /* collapsed by default for animation to */
 }
+
+.media-figure .image:not(.hidden) {
+  max-height: 1000px; /* adjust as needed to fully show the image */
+}
+
 .media-figure:has(.marker:hover) .image,
 .media-figure:has(.marker:active) .image {
-  /* width: calc(50% - 16rem); */
   display: block;
 }
+
 .media-figure .image img {
   max-width: 100%;
   width: 100%;
   height: auto;
   display: block;
 }
+
 .media-figure .image span {
   padding-block: .5rem;
   display: block;
 }
+
+.media-figure :not(img):not(.image) {
+  text-align: center;
+}
+
+
 
 
 
@@ -170,31 +174,35 @@ summary{
 
 .footnote-ref {
   color: #0066cc;
-  background-color: rgba(0,0,255,0.8);
+  background-color: rgba(0, 0, 255, 0.8);
   text-decoration: none;
-  background-color: rgba(0,0,255,0.8);
+  background-color: rgba(0, 0, 255, 0.8);
 }
 
-  
+
 .footnote-content {
   position: absolute;
   width: calc(50vw - 8rem);
   background-color: rgb(170, 255, 0);
   padding: 1rem;
   margin: 1rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: none;
   z-index: 100;
-  top: 0; /* Maintain Y position relative to footnote reference */
-  left: 0; /* Will be transformed */
+  top: 0;
+  /* Maintain Y position relative to footnote reference */
+  left: 0;
+  /* Will be transformed */
   overflow-wrap: break-word;
 }
 
 /* Specific rule to show content */
 .footnote-wrapper:hover .footnote-content {
   display: block;
-  left: 1rem; /* Start at 50% of viewport width */
-  transform: translate(0, -100%); /* No X transform needed as we set left directly */
+  left: 1rem;
+  /* Start at 50% of viewport width */
+  transform: translate(0, -100%);
+  /* No X transform needed as we set left directly */
 }
 
 /* Media query for smaller screens */
@@ -205,26 +213,31 @@ summary{
     transform: none;
     width: calc(100% - 2rem);
     margin: 0.5rem 0;
-    overflow-wrap:anywhere;
+    overflow-wrap: anywhere;
   }
-  
+
   .footnote-wrapper:hover .footnote-content {
-    left: auto; /* Reset the left property */
-    transform: none; /* No transform for mobile */
+    left: auto;
+    /* Reset the left property */
+    transform: none;
+    /* No transform for mobile */
   }
 }
 
 
 
 .blocks {
-  /* See https://www.w3schools.com/csS/css3_flexbox_container.asp */
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   margin: 1rem;
-
 }
 
+@media (max-width: 960px) {
+  .blocks {
+    margin: 0;
+  }
+}
 /*
 .blocks:has(.sidebar-images) {
   flex-wrap: nowrap;
@@ -245,248 +258,275 @@ summary{
   width: 50%;
   /* padding: 3rem; */
   display: block;
-  
+  margin-top: 4rem;
 }
-  .block-1 {
-    /* See: https://www.w3schools.com/cssref/css3_pr_background-size.php */
-    color: rgb(34, 0, 255);
-    /* background-image: url(../images/block1.PNG); */
-    background-color: rgb(255, 255, 255, 0.5);
-  
-    border-radius: 1rem;
-    box-shadow: 1rem 1rem 2rem rgba(170, 255, 0); /* X, Y, Blur, Spread, Color */ 
-    padding: min(2rem, 2vw);
-    margin: min(2rem, 2vw);;
-  }
 
-  .block-2  {
-    color: blue;
-    background-color: rgb(172, 169, 156);
-    
-    border-radius: 1rem;
-    box-shadow: 1rem 1rem 2rem rgba(170, 255, 0); /* X, Y, Blur, Spread, Color */
-    padding: min(2rem, 2vw);
-    margin: min(2rem, 2vw);
-  }
-  
-  
-  
-  
-  .block-3 > p {
-    color: rgb(0, 4, 255);
-    background-color: rgb(172, 169, 156);
-    border-radius: 1rem;
-    box-shadow: 1rem 1rem 2rem rgba(170, 255, 0); /* X, Y, Blur, Spread, Color */
-    padding: min(2rem, 2vw);
-    margin: min(2rem, 2vw);
-  
-  }
-  
-  
-  .block-4 > p {
-    color: rgb(7, 27, 255);
-    background-color: rgb(172, 169, 156);
-    border-radius: 1rem;
-    box-shadow: 1rem 1rem 2rem rgba(170, 255, 0); /* X, Y, Blur, Spread, Color */
-    padding: min(2rem, 2vw);
-    margin: min(2rem, 2vw);
-  }
-  
-  
-  .block-5  > p {
-    color: rgb(40, 44, 255);
-    background-color: rgb(172, 169, 156);
-    border-radius: 1rem;
-    box-shadow: 1rem 1rem 2rem rgba(170, 255, 0); /* X, Y, Blur, Spread, Color */
-    padding: min(2rem, 2vw);
-    margin: min(2rem, 2vw);
-  }
-  
-  .block-6  {
-    margin: min(2rem, 2vw);
-  }
-  .block-6 > div,
-  .block-6 > p {
-    width: 100%;
-    padding: min(2rem, 2vw);
-    color:rgba(0,0,255,0.8);
-    background-color: rgb(172, 169, 156);
-    border-radius: 1rem;
-    box-shadow: 1rem 1rem 2rem rgba(170, 255, 0); /* X, Y, Blur, Spread, Color */
-  }
-  
-  
-  .block-7 >p {
-    color: rgb(40, 44, 255);
-    background-color:  rgb(172, 169, 156);
-    border-radius: 1rem;
-    box-shadow: 1rem 1rem 2rem rgba(170, 255, 0); /* X, Y, Blur, Spread, Color */
-    padding: min(2rem, 2vw);
-    margin: min(2rem, 2vw);
-  }
-  
-  .block-8 {
-    color: rgb(40, 44, 255);
-    background-color: rgb(172, 169, 156);
-    border-radius: 1rem;
-    box-shadow: 1rem 1rem 2rem rgba(170, 255, 0); /* X, Y, Blur, Spread, Color */
-    padding: min(2rem, 2vw);
-    margin: min(2rem, 2vw);
-    width: auto;
-    max-width: 100%; 
-  }
+[class^="block-"] p{
+  padding: 20px;
+}
 
-  .block-8 > a {
-    word-wrap: break-word; 
-    overflow-wrap: break-word;
-    word-break: break-all; 
-    display: inline-block; 
-    max-width: 100%; 
-  }
- 
+.block-1 {
+  /* See: https://www.w3schools.com/cssref/css3_pr_background-size.php */
+  color: rgb(34, 0, 255);
+  /* background-image: url(../images/block1.PNG); */
+  background-color: rgb(255, 255, 255, 0.5);
+
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
+  /* X, Y, Blur, Spread, Color */
+  padding: min(2rem, 2vw);
+  margin: min(2rem, 2vw);
+  ;
+}
+
+.block-2 {
+  color: blue;
+  background-color: rgb(172, 169, 156);
+
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
+  /* X, Y, Blur, Spread, Color */
+  padding: min(2rem, 2vw);
+  margin: min(2rem, 2vw);
+}
+
+
+
+
+.block-3 {
+  color: rgb(0, 4, 255);
+  background-color: rgb(172, 169, 156);
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
+  /* X, Y, Blur, Spread, Color */
+  padding: min(2rem, 2vw);
+  margin: min(2rem, 2vw);
+
+}
+
+
+.block-4>p {
+  color: rgb(7, 27, 255);
+  background-color: rgb(172, 169, 156);
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
+  /* X, Y, Blur, Spread, Color */
+  padding: min(2rem, 2vw);
+  margin: min(2rem, 2vw);
+}
+
+
+.block-5>p {
+  color: rgb(40, 44, 255);
+  background-color: rgb(172, 169, 156);
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
+  /* X, Y, Blur, Spread, Color */
+  padding: min(2rem, 2vw);
+  margin: min(2rem, 2vw);
+}
+
+.block-6 {
+  margin: min(2rem, 2vw);
+}
+
+.block-6>div,
+.block-6>p {
+  width: 100%;
+  padding: min(2rem, 2vw);
+  color: rgba(0, 0, 255, 0.8);
+  background-color: rgb(172, 169, 156);
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
+  /* X, Y, Blur, Spread, Color */
+}
+
+
+.block-7>p {
+  color: rgb(40, 44, 255);
+  background-color: rgb(172, 169, 156);
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
+  /* X, Y, Blur, Spread, Color */
+  padding: min(2rem, 2vw);
+  margin: min(2rem, 2vw);
+}
+
+.block-8 {
+  color: rgb(40, 44, 255);
+  background-color: rgb(172, 169, 156);
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
+  /* X, Y, Blur, Spread, Color */
+  padding: min(2rem, 2vw);
+  margin: min(2rem, 2vw);
+  width: auto;
+  max-width: 100%;
+}
+
+.block-8>a {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  display: inline-block;
+  max-width: 100%;
+}
+
+/****************** 
+      CHAPTERS
+ ******************/
+h2 {
+  /* margin-top: 4rem; */
+}
+
+
 
 /****************** 
       HEADER
  ******************/
 
-  header{
-  }
-  
-  .block-title{
-    width: 100%;
-    font-family: 'Equateur';
-    background-color: var(--color-text-link);
-  }
+header {}
 
-  header h1{
-    margin: 0;
-    padding: 2rem;
-    font-size: 4rem;
-    color: var(--neon-green);
-    font-family: 'Equateur';
-    display: inline-block;
-  }
-  header h1 span{
-    white-space: nowrap;
-    margin-right: 0;
-    padding-right: 0;
-  }
-
-  header * img{
-    overflow: visible;
-    width: 4rem;
-    height: 4rem;
-    z-index: 100;
-    object-fit: contain;
-  }
-
-  .letter-image {
-    vertical-align: middle; /* Aligns with text */
-    display: inline-block;
-    margin-right: 0;
+.block-title {
+  width: 100%;
+  font-family: 'Equateur';
+  background-color: var(--color-text-link);
 }
 
-   
-  header nav {
-    font-size: 0.8rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgb(200, 200, 200);
-    z-index: 100;
-    padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+header h1 {
+  margin: 0;
+  padding: 2rem;
+  font-size: 4rem;
+  color: var(--neon-green);
+  font-family: 'Equateur';
+  display: inline-block;
+}
+
+header h1 span {
+  white-space: nowrap;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+header * img {
+  overflow: visible;
+  width: 4rem;
+  height: 4rem;
+  z-index: 100;
+  object-fit: contain;
+}
+
+.letter-image {
+  vertical-align: middle;
+  /* Aligns with text */
+  display: inline-block;
+  margin-right: 0;
+}
+
+
+header nav {
+  font-size: 0.8rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(200, 200, 200);
+  z-index: 100;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header nav ul {
+  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  margin: 0;
+  padding: 0;
+  width: 100svw;
+}
+
+header nav ul li {
+  padding: 0.5rem;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  width: 100%;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #000;
+}
+
+
+@media (max-width: 960px) {
+  header h1 {
+    font-size: 3rem;
   }
 
   header nav ul {
-    justify-content: space-between;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    margin: 0;
-    padding: 0;
-    width: 100svw;
+    flex-wrap: wrap;
+    /* Allow items to wrap to next line */
+    grid-template-columns: repeat(4, 1fr);
   }
 
   header nav ul li {
-    padding: 0.5rem;
+    box-sizing: none;
+    flex: 0 0 calc(25% - 2rem);
+    /* Each item takes ~25% width (4 items per row) with 2rem margin of the parent element */
   }
 
-  header nav ul li a {
-    text-decoration: none;
-    width: 100%;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
+  /* Increase page wrapper padding to accommodate taller nav */
+
+  header nav {
+    font-size: 0.75rem;
+    padding: 8px 0;
   }
-
-  header nav ul li a:hover {
-    color: #000;
-  }
-
-  
-  @media (max-width: 960px) {
-    header h1{
-      font-size: 3rem;
-    }
-
-    header nav ul {
-      flex-wrap: wrap; /* Allow items to wrap to next line */
-      grid-template-columns: repeat(4, 1fr);
-    }
-    
-    header nav ul li {
-      box-sizing: none;
-      flex: 0 0 calc(25% - 2rem); /* Each item takes ~25% width (4 items per row) with 2rem margin of the parent element */
-    }
-    
-    /* Increase page wrapper padding to accommodate taller nav */
-    
-    header nav {
-      font-size: 0.75rem;
-      padding: 8px 0;
-    }
-  }
+}
 
 
 
-  /****************** 
+/****************** 
       FOOTER
  ******************/
 
-  footer ul{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgb(200, 200, 200);
-    z-index: 100;
-    padding: 10px 0;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Shadow on top instead of bottom */
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: flex-start;
-    font-size: 0.8rem;
-    gap: 1rem;
-    justify-content: space-between;
-    padding-inline: 1rem;
-  }
-  
-  footer ul li{
-    list-style-type: "H";
-  }
+footer ul {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(200, 200, 200);
+  z-index: 100;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  /* Shadow on top instead of bottom */
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: flex-start;
+  font-size: 0.8rem;
+  gap: 1rem;
+  justify-content: space-between;
+  padding-inline: 1rem;
+}
 
-  @media (max-width: 779px) {
-    footer ul{
-      position: static;
-    }
-  }
+footer ul li {
+  list-style-type: "H";
+}
 
-  .bibliography-link{
-    font-family: "scotch-display-dingbats", sans-serif;
-    color: var(--neon-green);
+@media (max-width: 779px) {
+  footer ul {
+    position: static;
   }
+}
+
+.bibliography-link {
+  font-family: "scotch-display-dingbats", sans-serif;
+  color: var(--neon-green);
+}
 
 
 /* UTILITY CLASSES */
@@ -501,6 +541,10 @@ summary{
   display: none;
 }
 
+.hidden {
+  display: none;
+}
+
 .text-container {
   /* position: relative; */
   display: inline-block;
@@ -511,8 +555,10 @@ summary{
   display: none;
   position: absolute;
   top: 0;
-  left: 110%; /* Positions the image to the right of the text */
-  width: 200px; /* Adjust as needed */
+  left: 110%;
+  /* Positions the image to the right of the text */
+  width: 200px;
+  /* Adjust as needed */
   border: 1px solid #ccc;
   background-color: #fff;
   padding: 5px;
@@ -525,24 +571,27 @@ summary{
 
 
 
-a   {
+a {
   color: black;
   text-decoration: none;
 }
 
-a:hover   {
+a:hover {
   color: rgb(0, 21, 248);
   text-decoration: none;
-} 
+}
 
-a:visited   {
+a:visited {
   color: rgb(0, 255, 47);
   text-decoration: none;
 }
 
 
 @media screen and (max-width: 960px) {
-  [class^="block-"] { width: auto }
+  [class^="block-"] {
+    width: auto;
+    margin: 7.8px;
+  }
 
   .media-figure .image {
     position: static;
@@ -556,14 +605,93 @@ a:visited   {
 /* WEBSITE MEDIA QUERIES */
 
 /* responsive typeface for various breaking points, sets the default 'rem' value */
-@media (max-width: 299px) { :root{--font-size: 18px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 299px) and (max-width: 340px) { :root{--font-size: 19px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 340px) and (max-width: 440px) { :root{--font-size: 20px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 441px) and (max-width: 779px) { :root{--font-size: 19px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 780px) and (max-width: 992px) { :root{--font-size: 20px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 993px) and (max-width: 1200px) { :root{--font-size: 21px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 1201px) and (max-width: 1320px) { :root{--font-size: 22px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 1321px) { :root{--font-size: 24px;} html, body {font: var(--font-size) var(--font-text); } }
+@media (max-width: 299px) {
+  :root {
+    --font-size: 18px;
+  }
+
+  html,
+  body {
+    font: var(--font-size) var(--font-text);
+  }
+}
+
+@media (min-width: 299px) and (max-width: 340px) {
+  :root {
+    --font-size: 19px;
+  }
+
+  html,
+  body {
+    font: var(--font-size) var(--font-text);
+  }
+}
+
+@media (min-width: 340px) and (max-width: 440px) {
+  :root {
+    --font-size: 20px;
+  }
+
+  html,
+  body {
+    font: var(--font-size) var(--font-text);
+  }
+}
+
+@media (min-width: 441px) and (max-width: 779px) {
+  :root {
+    --font-size: 19px;
+  }
+
+  html,
+  body {
+    font: var(--font-size) var(--font-text);
+  }
+}
+
+@media (min-width: 780px) and (max-width: 992px) {
+  :root {
+    --font-size: 20px;
+  }
+
+  html,
+  body {
+    font: var(--font-size) var(--font-text);
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  :root {
+    --font-size: 21px;
+  }
+
+  html,
+  body {
+    font: var(--font-size) var(--font-text);
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1320px) {
+  :root {
+    --font-size: 22px;
+  }
+
+  html,
+  body {
+    font: var(--font-size) var(--font-text);
+  }
+}
+
+@media (min-width: 1321px) {
+  :root {
+    --font-size: 24px;
+  }
+
+  html,
+  body {
+    font: var(--font-size) var(--font-text);
+  }
+}
 
 /* styles for 'mobile', screen sizes up to 779px, should covers 'mobile' and 'tablet' */
 /* style this one first and then use the subsequent ones in a cascading way (from general to specific) */
@@ -576,12 +704,12 @@ a:visited   {
 
   /* utility classes, mobile */
 
-  .desktop-only{
-    display:none;
+  .desktop-only {
+    display: none;
   }
 
-  .mobile-only{
-    display:block;
+  .mobile-only {
+    display: block;
   }
 
 }
@@ -616,7 +744,7 @@ a:visited   {
   }
 
   /* Show image when marker is clicked again */
-  .media-figure:has(.marker:active) .marker:active ~ .image {
+  .media-figure:has(.marker:active) .marker:active~.image {
     display: block;
   }
 }
@@ -649,4 +777,3 @@ a:visited   {
   padding-block: .5rem;
   display: block;
 }
-
