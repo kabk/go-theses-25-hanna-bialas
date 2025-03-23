@@ -1,19 +1,3 @@
-/* @charset "UTF-8"; */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* @FONT FACE (enable the use of 'custom fonts' inside your document) */
-
-/* 
-  You can use 'fontsquirrel' (https://www.fontsquirrel.com) 
-  or 'transfonter' (https://transfonter.org)
-  to generate your own font for the web from .ttf or .oft files 
-*/
-
 @font-face {
   font-family: 'Equateur';
   src: url('/assets/fonts/Equateur-Regular.woff2');
@@ -23,35 +7,71 @@
 }
 
 
+@font-face {
+  font-family: 'OrticaB';
+  src: url('/assets/fonts/OrticaLinear-Bold.woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'OrticaR';
+  src: url('/assets/fonts/OrticaLinear-Regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'OrticaL';
+  src: url('/assets/fonts/OrticaLinear-Light.woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+
 /* VARIABLES */
 
 :root {
-  /* Color values */
+
   --color-background: rgb(119, 119, 119);
   --color-text: rgba(0, 0, 0, 1);
   --color-text-link: rgba(0, 0, 255, 0.8);
   --color-text-link-hover: rgba(0, 0, 255, 0.4);
   --neon-green: rgb(170, 255, 0);
-  /* Font values */
-  --font-text: 'Your Font Name', 'Helvetica', 'Arial', sans-serif;
+  --blue: rgb(0, 4, 249);
+  --grey: rgb(172, 169, 156);
+  --neon-box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
+
+  --font-text: 'OrticaB', 'Georgia', serif;
   --font-size: 18px;
-  /* Margin value */
-  --margin: 1rem;
+
 }
 
 
-
-/* GENERAL STYLES */
 
 html {
   font: var(--font-size) var(--font-family);
   color: var(--color-text);
   background-color: var(--color-background);
+  overflow-x: hidden;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 body {
   position: relative;
   background-color: var(--color-background);
+  /* background-image: url('/assets/images/bg.png'); */
+  background-repeat: repeat;
+  background-size: 12rem;
+  
   font: var(--font-size) var(--font-family);
   color: var(--color-text);
   width: 100%;
@@ -59,29 +79,24 @@ body {
   overflow-y: auto;
 
   font-family: serif;
-  background-color: rgb(119, 119, 119);
+  background-color: rgb(119, 119, 119);  
 }
 
 
 h2 {
   text-align: center;
-  color: rgba(0, 0, 255, 0.8);
-
+  color: var(--blue);
+  font-size: 3rem;
 }
-
-
 
 h3 {
   text-align: center;
-  color: rgba(0, 0, 255, 0.8);
+  color: var(--blue);
 }
-
-
-
 
 h4 {
   text-align: center;
-  color: rgba(0, 0, 255, 0.8);
+  color: var(--blue);
   font-size: 1.5rem;
 }
 
@@ -97,8 +112,6 @@ li {
   font-weight: 400;
   font-style: normal;
   list-style-type: "O";
-
-
 }
 
 li * {
@@ -109,7 +122,7 @@ li * {
 
 
 div.page-wrapper {
-  padding: var(--margin);
+  padding: 1rem;
   padding-block: 50px;
 }
 
@@ -131,11 +144,11 @@ div.page-wrapper {
   width: 100%;
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
-  max-height: 0; /* collapsed by default for animation to */
+  max-height: 0; /* collapsed by default for animation*/
 }
 
 .media-figure .image:not(.hidden) {
-  max-height: 1000px; /* adjust as needed to fully show the image */
+  max-height: 1000px; 
 }
 
 .media-figure:has(.marker:hover) .image,
@@ -174,29 +187,26 @@ div.page-wrapper {
 
 .footnote-ref {
   color: #0066cc;
-  background-color: rgba(0, 0, 255, 0.8);
+  background-color: var(--blue);
   text-decoration: none;
-  background-color: rgba(0, 0, 255, 0.8);
 }
 
 
 .footnote-content {
   position: absolute;
   width: calc(50vw - 8rem);
-  background-color: rgb(170, 255, 0);
+  background-color: var(--neon-green);
   padding: 1rem;
   margin: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: none;
   z-index: 100;
-  top: 0;
-  /* Maintain Y position relative to footnote reference */
-  left: 0;
-  /* Will be transformed */
+  top: 0; /* Maintain Y position relative to footnote reference */
+  left: 0; /* Will be transformed */
   overflow-wrap: break-word;
 }
 
-/* Specific rule to show content */
+
 .footnote-wrapper:hover .footnote-content {
   display: block;
   left: 1rem;
@@ -218,9 +228,7 @@ div.page-wrapper {
 
   .footnote-wrapper:hover .footnote-content {
     left: auto;
-    /* Reset the left property */
     transform: none;
-    /* No transform for mobile */
   }
 }
 
@@ -238,92 +246,121 @@ div.page-wrapper {
     margin: 0;
   }
 }
-/*
-.blocks:has(.sidebar-images) {
-  flex-wrap: nowrap;
-}
-.blocks:has(.sidebar-images) div[class^="block"] {
-  flex-shrink: 0;
-}
 
-.blocks .sidebar-images {
-  padding-block: 5rem;
-}
-.blocks .sidebar-images p { display: none }
-*/
 
 
 [class^="block-"] {
-  /* See: https://www.w3schools.com/cssref/sel_attr_begin.php */
   width: 50%;
   /* padding: 3rem; */
   display: block;
+  margin: min(2rem, 2vw);
   margin-top: 4rem;
 }
 
 [class^="block-"] p{
-  padding: 20px;
+  padding: 1rem;
+  text-align: justify;
+  font-size: 1rem;
+  text-justify: inter-word;
+  line-height: 1.4rem;
+
 }
 
-.block-1 {
-  /* See: https://www.w3schools.com/cssref/css3_pr_background-size.php */
-  color: rgb(34, 0, 255);
-  /* background-image: url(../images/block1.PNG); */
-  background-color: rgb(255, 255, 255, 0.5);
+@media (max-width: 960px) {
+  [class^="block-"] p{
+    padding: 20px;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    text-align: justify;
+    text-justify: inter-word;
 
+    transform: none;
+  }
+  
+}
+
+
+@media (min-width: 961px) {
+  /* change of positioning  */
+  .block-4 > p:nth-of-type(odd) {
+    transform: translate3d(1rem, 0, 0px);
+  }
+  .block-5 > p:nth-of-type(odd) {
+    transform: translate3d(1rem, 0, 0px);
+  }
+  .block-6 > p:nth-of-type(odd) {
+    transform: translate3d(1rem, 0, 0px);
+  }
+}
+
+/* Reset for mobile - not necessary but keeps code clear */
+@media (max-width: 960px) {
+  .block-4 > p:nth-of-type(odd) {
+    transform: none;
+  }
+  .block-5 > p:nth-of-type(odd) {
+    transform: none;
+  }
+  .block-6 > p:nth-of-type(odd) {
+    transform: none;
+  }
+}
+
+
+.block-1 {
+  color: var(--blue);
+  background-color: var(--grey);
   border-radius: 1rem;
-  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
-  /* X, Y, Blur, Spread, Color */
-  padding: min(2rem, 2vw);
-  margin: min(2rem, 2vw);
-  ;
+  box-shadow: var(--neon-box-shadow);
+
+  /* padding: min(2rem, 2vw); */
+  /* margin: min(2rem, 2vw); */
 }
 
 .block-2 {
-  color: blue;
-  background-color: rgb(172, 169, 156);
-
+  color: var(--blue);
+  background-color: var(--grey);
   border-radius: 1rem;
-  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
-  /* X, Y, Blur, Spread, Color */
-  padding: min(2rem, 2vw);
-  margin: min(2rem, 2vw);
+  box-shadow: var(--neon-box-shadow);
+
+  /* padding: min(2rem, 2vw); */
+  /* margin: min(2rem, 2vw); */
 }
 
 
 
 
 .block-3 {
-  color: rgb(0, 4, 255);
-  background-color: rgb(172, 169, 156);
+  color: var(--blue);
+  background-color: var(--grey);
   border-radius: 1rem;
-  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
-  /* X, Y, Blur, Spread, Color */
-  padding: min(2rem, 2vw);
-  margin: min(2rem, 2vw);
+  box-shadow: var(--neon-box-shadow);
+
+  /* padding: min(2rem, 2vw); */
+  /* margin: min(2rem, 2vw); */
 
 }
 
 
 .block-4>p {
-  color: rgb(7, 27, 255);
-  background-color: rgb(172, 169, 156);
+  color: var(--blue);
+  background-color: var(--grey);
   border-radius: 1rem;
-  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
-  /* X, Y, Blur, Spread, Color */
-  padding: min(2rem, 2vw);
-  margin: min(2rem, 2vw);
+  box-shadow: var(--neon-box-shadow);
+
+  /* padding: min(2rem, 2vw); */
+  /* margin: min(2rem, 2vw); */
 }
 
 
 .block-5>p {
-  color: rgb(40, 44, 255);
-  background-color: rgb(172, 169, 156);
+  color: var(--blue);
+  background-color: var(--grey);
   border-radius: 1rem;
-  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
-  /* X, Y, Blur, Spread, Color */
-  padding: min(2rem, 2vw);
-  margin: min(2rem, 2vw);
+  box-shadow: var(--neon-box-shadow);
+
+  /* padding: min(2rem, 2vw); */
+  /* margin: min(2rem, 2vw); */
 }
 
 .block-6 {
@@ -333,35 +370,39 @@ div.page-wrapper {
 .block-6>div,
 .block-6>p {
   width: 100%;
-  padding: min(2rem, 2vw);
-  color: rgba(0, 0, 255, 0.8);
-  background-color: rgb(172, 169, 156);
+  color: var(--blue);
+  background-color: var(--grey);
   border-radius: 1rem;
-  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
-  /* X, Y, Blur, Spread, Color */
+  box-shadow: var(--neon-box-shadow);
+
+  /* padding: min(2rem, 2vw); */
+  /* margin: min(2rem, 2vw); */
 }
 
 
 .block-7>p {
-  color: rgb(40, 44, 255);
-  background-color: rgb(172, 169, 156);
+  color: var(--blue);
+  background-color: var(--grey);
   border-radius: 1rem;
-  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
-  /* X, Y, Blur, Spread, Color */
-  padding: min(2rem, 2vw);
-  margin: min(2rem, 2vw);
+  box-shadow: var(--neon-box-shadow);
+
+  /* padding: min(2rem, 2vw); */
+  /* margin: min(2rem, 2vw); */
 }
 
 .block-8 {
-  color: rgb(40, 44, 255);
-  background-color: rgb(172, 169, 156);
+  color: var(--blue);
+  background-color: var(--grey);
   border-radius: 1rem;
-  box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
-  /* X, Y, Blur, Spread, Color */
-  padding: min(2rem, 2vw);
-  margin: min(2rem, 2vw);
-  width: auto;
+  box-shadow: var(--neon-box-shadow);
   max-width: 100%;
+  width: auto;
+  padding: 2rem;
+}
+
+.block-8 p{
+  padding: 0px;
+  margin: 0px;
 }
 
 .block-8>a {
@@ -370,13 +411,6 @@ div.page-wrapper {
   word-break: break-all;
   display: inline-block;
   max-width: 100%;
-}
-
-/****************** 
-      CHAPTERS
- ******************/
-h2 {
-  /* margin-top: 4rem; */
 }
 
 
@@ -388,7 +422,7 @@ h2 {
 header {}
 
 .block-title {
-  width: 100%;
+  width: 93vw;
   font-family: 'Equateur';
   background-color: var(--color-text-link);
 }
@@ -418,7 +452,6 @@ header * img {
 
 .letter-image {
   vertical-align: middle;
-  /* Aligns with text */
   display: inline-block;
   margin-right: 0;
 }
@@ -430,7 +463,7 @@ header nav {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgb(200, 200, 200);
+  background-color: var(--grey);
   z-index: 100;
   padding: 10px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -442,8 +475,36 @@ header nav ul {
   grid-template-columns: repeat(8, 1fr);
   margin: 0;
   padding: 0;
-  width: 100svw;
+  width: 100vw;
 }
+
+@media (min-width: 961px) {
+  header nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 960px) {
+  header nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  header nav ul li {
+    width: 100%;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  header nav ul li:last-child {
+    border-bottom: none;
+  }
+}
+  
 
 header nav ul li {
   padding: 0.5rem;
@@ -479,7 +540,6 @@ header nav ul li a:hover {
     /* Each item takes ~25% width (4 items per row) with 2rem margin of the parent element */
   }
 
-  /* Increase page wrapper padding to accommodate taller nav */
 
   header nav {
     font-size: 0.75rem;
@@ -497,10 +557,12 @@ footer ul {
   position: fixed;
   bottom: 0;
   left: 0;
+  /* right: 0; */
+  margin: 0;
   width: 100%;
-  background-color: rgb(200, 200, 200);
+  background-color: var(--grey);
   z-index: 100;
-  padding: 10px 0;
+  padding: 0;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   /* Shadow on top instead of bottom */
   display: flex;
@@ -508,12 +570,13 @@ footer ul {
   justify-content: left;
   align-items: flex-start;
   font-size: 0.8rem;
-  gap: 1rem;
+  /* gap: 1rem; */
   justify-content: space-between;
-  padding-inline: 1rem;
+  /* padding-inline: 1rem; */
 }
 
 footer ul li {
+  padding-inline: 1rem;
   list-style-type: "H";
 }
 
@@ -558,7 +621,6 @@ footer ul li {
   left: 110%;
   /* Positions the image to the right of the text */
   width: 200px;
-  /* Adjust as needed */
   border: 1px solid #ccc;
   background-color: #fff;
   padding: 5px;
@@ -577,12 +639,12 @@ a {
 }
 
 a:hover {
-  color: rgb(0, 21, 248);
+  color: var(--blue);
   text-decoration: none;
 }
 
 a:visited {
-  color: rgb(0, 255, 47);
+  color: var(--neon-green);
   text-decoration: none;
 }
 
@@ -645,7 +707,7 @@ a:visited {
 
   html,
   body {
-    font: var(--font-size) var(--font-text);
+    font: var(--font-size) var (--font-text);
   }
 }
 
@@ -684,7 +746,7 @@ a:visited {
 
 @media (min-width: 1321px) {
   :root {
-    --font-size: 24px;
+    /* --font-size: 24px; */
   }
 
   html,
@@ -776,4 +838,47 @@ a:visited {
 .media-figure .image span {
   padding-block: .5rem;
   display: block;
+}
+
+/* Style for mobile menu button */
+.mobile-menu-btn,
+#mobile-menu-btn {
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 960px) {
+    /* Style the mobile menu button (unchanged except already updated in HTML) */
+    .mobile-menu-btn,
+    #mobile-menu-btn {
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 1rem;
+      display: block;
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 110;
+    }
+    /* Instead of display:none/block, use max-height and transition for nav */
+    header nav {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    header nav.active {
+        max-height: 500px; /* adjust based on content */
+    }
+    /* Ensure mobile-only elements are visible */
+    .mobile-only {
+        display: block;
+    }
+    .desktop-only {
+        display: none;
+    }
 }
