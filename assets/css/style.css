@@ -124,6 +124,7 @@ li * {
 div.page-wrapper {
   padding: 1rem;
   padding-block: 50px;
+  /* overflow-x: hidden; */
 }
 
 @media (max-width: 960px) {
@@ -342,7 +343,7 @@ div.page-wrapper {
 }
 
 
-.block-4>p {
+.block-4 >p {
   color: var(--blue);
   background-color: var(--grey);
   border-radius: 1rem;
@@ -353,7 +354,7 @@ div.page-wrapper {
 }
 
 
-.block-5>p {
+.block-5 >p {
   color: var(--blue);
   background-color: var(--grey);
   border-radius: 1rem;
@@ -367,8 +368,8 @@ div.page-wrapper {
   margin: min(2rem, 2vw);
 }
 
-.block-6>div,
-.block-6>p {
+
+.block-6 >p{
   width: 100%;
   color: var(--blue);
   background-color: var(--grey);
@@ -380,7 +381,7 @@ div.page-wrapper {
 }
 
 
-.block-7>p {
+.block-7  {
   color: var(--blue);
   background-color: var(--grey);
   border-radius: 1rem;
@@ -396,7 +397,8 @@ div.page-wrapper {
   border-radius: 1rem;
   box-shadow: var(--neon-box-shadow);
   max-width: 100%;
-  width: auto;
+  /* width: auto; */
+  width: 100%;
   padding: 2rem;
 }
 
@@ -881,4 +883,8 @@ a:visited {
     .desktop-only {
         display: none;
     }
+}
+
+.issue {
+  /* display: none; */
 }
