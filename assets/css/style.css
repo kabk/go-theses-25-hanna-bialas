@@ -11,7 +11,7 @@
   font-family: 'OrticaB';
   src: url('../fonts/OrticaLinear-Bold.woff2');
   font-weight: bold;
-  font-style: normal;
+  font-style: bold;
   font-display: block;
 }
 
@@ -41,11 +41,11 @@
   --color-text-link: rgba(0, 0, 255, 0.8);
   --color-text-link-hover: rgba(0, 0, 255, 0.4);
   --neon-green: rgb(170, 255, 0);
-  --blue: rgb(0, 4, 249);
-  --grey: rgb(172, 169, 156);
+  --blue: rgb(44, 47, 210);
+  --grey: rgba(190, 190, 189, 0.8);
   --neon-box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
 
-  --font-text: 'OrticaB', 'Georgia', serif;
+  --font-text: 'OrticaR', 'Georgia', serif;
   --font-size: 18px;
 
 }
@@ -69,8 +69,8 @@ body {
   position: relative;
   background-color: var(--color-background);
   /* background-image: url('/assets/images/bg.png'); */
-  background-repeat: repeat;
-  background-size: 12rem;
+  /* background-repeat: repeat; */
+  /* background-size: 12rem; */
   
   font: var(--font-size) var(--font-family);
   color: var(--color-text);
@@ -80,6 +80,7 @@ body {
 
   font-family: serif;
   background-color: rgb(119, 119, 119);  
+  background-color: rgb(40, 50, 20);
 }
 
 
@@ -124,7 +125,7 @@ li * {
 div.page-wrapper {
   padding: 1rem;
   padding-block: 50px;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 @media (max-width: 960px) {
@@ -176,11 +177,7 @@ div.page-wrapper {
 
 
 
-
-
-
-
-/* New CSS just for footnotes */
+/* FOOTNOTES */
 .footnote-wrapper {
   position: relative;
   display: inline;
@@ -238,6 +235,7 @@ div.page-wrapper {
 .blocks {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   gap: 1rem;
   margin: 1rem;
 }
@@ -256,10 +254,13 @@ div.page-wrapper {
   display: block;
   margin: min(2rem, 2vw);
   margin-top: 4rem;
+  /* padding-top: 3%; */
+  padding-bottom: 3rem;
 }
 
 [class^="block-"] p{
-  padding: 1rem;
+  padding: 0rem 4.5rem 0rem 4.5rem;
+  text-indent: 1.7rem;
   text-align: justify;
   font-size: 1rem;
   text-justify: inter-word;
@@ -282,15 +283,18 @@ div.page-wrapper {
 
 
 @media (min-width: 961px) {
-  /* change of positioning  */
+  /* =================================
+    BUG: if uncommented will affect 
+    positioning of popping out images
+  ====================================*/
   .block-4 > p:nth-of-type(odd) {
-    transform: translate3d(1rem, 0, 0px);
+    /* transform: translate3d(1rem, 0, 0px); */
   }
   .block-5 > p:nth-of-type(odd) {
-    transform: translate3d(1rem, 0, 0px);
+    /* transform: translate3d(1rem, 0, 0px); */
   }
   .block-6 > p:nth-of-type(odd) {
-    transform: translate3d(1rem, 0, 0px);
+    /* transform: translate3d(1rem, 0, 0px); */
   }
 }
 
@@ -308,7 +312,7 @@ div.page-wrapper {
 }
 
 
-.block-1 {
+.block-1 >p{
   color: var(--blue);
   background-color: var(--grey);
   border-radius: 1rem;
@@ -318,7 +322,7 @@ div.page-wrapper {
   /* margin: min(2rem, 2vw); */
 }
 
-.block-2 {
+.block-2 >p{
   color: var(--blue);
   background-color: var(--grey);
   border-radius: 1rem;
@@ -331,7 +335,7 @@ div.page-wrapper {
 
 
 
-.block-3 {
+.block-3 >p{
   color: var(--blue);
   background-color: var(--grey);
   border-radius: 1rem;
@@ -365,7 +369,7 @@ div.page-wrapper {
 }
 
 .block-6 {
-  margin: min(2rem, 2vw);
+  /* margin: min(2rem, 2vw); */
 }
 
 
@@ -397,8 +401,7 @@ div.page-wrapper {
   border-radius: 1rem;
   box-shadow: var(--neon-box-shadow);
   max-width: 100%;
-  /* width: auto; */
-  width: 100%;
+  width: auto;
   padding: 2rem;
 }
 
@@ -420,8 +423,6 @@ div.page-wrapper {
 /****************** 
       HEADER
  ******************/
-
-header {}
 
 .block-title {
   width: 93vw;
@@ -554,32 +555,40 @@ header nav ul li a:hover {
 /****************** 
       FOOTER
  ******************/
+footer {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
 
 footer ul {
+  width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
-  /* right: 0; */
   margin: 0;
-  width: 100%;
+  padding: 0.5rem 1rem; /* Add padding to the ul instead of li */
   background-color: var(--grey);
   z-index: 100;
-  padding: 0;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  /* Shadow on top instead of bottom */
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: space-between;
   align-items: flex-start;
   font-size: 0.8rem;
-  /* gap: 1rem; */
-  justify-content: space-between;
-  /* padding-inline: 1rem; */
+  box-sizing: border-box; /* Include padding in width calculation */
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 footer ul li {
-  padding-inline: 1rem;
+  padding-left: 0.5rem; /* Reduce padding */
   list-style-type: "H";
+  box-sizing: border-box; /* Include padding in width calculation */
+  white-space: nowrap; /* Optional: prevent text from wrapping */
+  overflow: hidden; /* Optional: hide overflow text */
+  text-overflow: ellipsis; /* Optional: show ellipsis for overflow text */
 }
 
 @media (max-width: 779px) {
@@ -887,4 +896,9 @@ a:visited {
 
 .issue {
   /* display: none; */
+}
+
+.block-4 >p, .block-5 >p, .block-6 >p {
+  /* padding-top: 2rem;
+  padding-bottom: 2rem; */
 }

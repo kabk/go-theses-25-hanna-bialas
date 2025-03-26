@@ -56,10 +56,16 @@ docReady(function() {
     marker.addEventListener('click', toggleImage);
     marker.addEventListener('touchstart', toggleImage);
   });
+  
+  // Log all markers for debugging
+  console.log('All markers:', markers);
+  markers.forEach((marker, index) => {
+    console.log(`Marker ${index}:`, marker);
+  });
 });
 
 function toggleImage(e) {
-  // console.log('toggleImage triggered by event:', e.type);
+  console.log('toggleImage triggered by event:', e.type);
   e.preventDefault(); // Prevent potential duplicate event triggers on mobile
   // Find the nearest .media-figure and its child .image
   const mediaFigure = this.closest('.media-figure');
@@ -69,12 +75,12 @@ function toggleImage(e) {
       image.classList.toggle('hidden');
       const isVisible = !image.classList.contains('hidden');
       this.setAttribute('aria-expanded', isVisible);
-      // console.debug('Image toggled, isVisible:', isVisible);
+      console.debug('Image toggled, isVisible:', isVisible);
     } else {
-      // console.error('No .image element found in the media-figure');
+      console.error('No .image element found in the media-figure');
     }
   } else {
-    // console.error('No media-figure container found');
+    console.error('No media-figure container found');
   }
 }
 
