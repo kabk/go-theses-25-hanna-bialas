@@ -624,7 +624,7 @@ footer ul li {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .text-container {
@@ -829,7 +829,7 @@ a:visited {
   .media-figure:has(.marker:active) .marker:active~.image {
     display: block;
   }
-xxxxxxx
+
   .block-1 .test-blocks-wrapper-initial{
     color: var(--blue);
     background-color: var(--grey);
