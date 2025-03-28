@@ -36,7 +36,11 @@
 
 :root {
 
-  --color-background: rgb(119, 119, 119);
+
+  
+  
+
+
   --color-text: rgba(0, 0, 0, 1);
   --color-text-link: rgba(0, 0, 255, 0.8);
   --color-text-link-hover: rgba(0, 0, 255, 0.4);
@@ -44,6 +48,15 @@
   --blue: rgb(44, 47, 210);
   --grey: rgba(190, 190, 189, 0.8);
   --neon-box-shadow: 1rem 1rem 2rem rgba(170, 255, 0);
+
+  --color-background: #333333;
+  --color-text: #f8f8f8;
+  --color-text-link: rgba(170, 255, 0, 0.8);
+  --color-text-link-hover: rgba(170, 255, 0, 0.5);
+  --neon-green: rgb(170, 255, 0);
+  --blue: rgb(44, 47, 210);
+  --grey: rgba(60, 60, 60, 0.8);
+  --light-grey: rgba(190, 190, 189, 0.8);
 
   --font-text: 'OrticaR', 'Georgia', serif;
   --font-size: 18px;
@@ -366,7 +379,7 @@ div.page-wrapper {
   margin: 0px;
 }
 
-.block-5  .test-blocks-wrapper-initial {
+.block-5  .test-blocks-wrapper-initial > p {
   color: var(--blue);
   background-color: var(--grey);
   border-radius: 1rem;
@@ -377,11 +390,12 @@ div.page-wrapper {
 }
 
 .block-6  {
+  
   /* margin: min(2rem, 2vw); */
 }
 
 
-.block-6  .test-blocks-wrapper-initial{
+.block-6  .test-blocks-wrapper-initial > p {
   /* width: 100%; */
   color: var(--blue);
   background-color: var(--grey);
@@ -839,6 +853,14 @@ a:visited {
     /* padding: min(2rem, 2vw); */
     /* margin: min(2rem, 2vw); */
   }
+}
+
+.title-and-first-paragraph {
+  color: var(--blue);
+    background-color: var(--grey);
+    border-radius: 1rem;
+    box-shadow: var(--neon-box-shadow);
+    margin-block: 2rem
 }
 
 /* Desktop styles */
