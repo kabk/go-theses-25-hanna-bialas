@@ -78,6 +78,7 @@ body {
   line-height: 1.6;
   width: 100%;
   min-height: 100vh;
+  hyphens: auto;
 }
 
 /* LAYOUT STRUCTURE */
